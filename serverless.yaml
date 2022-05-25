@@ -1,0 +1,19 @@
+service: serverless-nestjs
+# frameworkVersion: '3.18.2'
+# configValidationMode: warn
+plugins:
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs12.x
+  # stage: ${opt:stage, 'dev'}
+  # region: ${opt:region, 'ap-southeast-1'}
+  # apiGateway:
+  #   shouldStartNameWithService: true
+functions:
+  main:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
